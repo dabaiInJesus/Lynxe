@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.cloud.ai.lynxe.tool.database.model.vo.DatasourceConfigVO;
 import com.alibaba.cloud.ai.lynxe.tool.database.service.DatasourceConfigService;
+import com.alibaba.cloud.ai.lynxe.tool.database.service.DatabaseDriverConstants;
 
 /**
  * REST Controller for managing datasource configurations
@@ -223,6 +224,49 @@ public class DatasourceConfigController {
 			response.put("success", false);
 			response.put("message", "Connection test failed: " + e.getMessage());
 			return ResponseEntity.ok(response);
+		}
+	}
+
+	/**
+	 * Get all supported database types
+	 */
+	@GetMapping("/supported-types")
+	public ResponseEntity<Map<String, Object>> getSupportedTypes() {
+		try {
+			logger.info("Retrieving all supported database types");
+			java.util.Set<String> types = DatabaseDriverConstants.getSupportedTypes();
+			Map<String, Object> response = new java.util.HashMap<>();
+			response.put("types", types);
+			response.put("defaultPorts", DatabaseDriverConstants.DEFAULT_PORT_MAP);
+			return ResponseEntity.ok(response);
+		}
+		catch (Exception e) {
+			logger.error("Error retrieving supported database types", e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	/**
+	 * Get URL pattern for a specific database type
+	 */
+	@GetMapping("/url-pattern/{type}")
+	public ResponseEntity<Map<String, Object>> getUrlPattern(@PathVariable String type) {
+		try {
+			logger.info("Retrieving URL pattern for type: {}", type);
+			String pattern = DatabaseDriverConstants.getUrlPattern(type);
+			Integer defaultPort = DatabaseDriverConstants.getDefaultPort(type);
+			String driverClass = DatabaseDriverConstants.getDriverClass(type);
+
+			Map<String, Object> response = new java.util.HashMap<>();
+			response.put("type", type);
+			response.put("urlPattern", pattern);
+			response.put("defaultPort", defaultPort);
+			response.put("driverClass", driverClass);
+			return ResponseEntity.ok(response);
+		}
+		catch (Exception e) {
+			logger.error("Error retrieving URL pattern for type: {}", type, e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 
