@@ -42,6 +42,37 @@ public class DatabaseConfigConstants {
 
 	public static final String ENABLE_FALSE = "false";
 
+	// Supported database types
+	public static final String DB_TYPE_MYSQL = "mysql";
+
+	public static final String DB_TYPE_POSTGRESQL = "postgresql";
+
+	public static final String DB_TYPE_ORACLE = "oracle";
+
+	public static final String DB_TYPE_SQLSERVER = "sqlserver";
+
+	public static final String DB_TYPE_H2 = "h2";
+
+	public static final String DB_TYPE_CLICKHOUSE = "clickhouse";
+
+	public static final String DB_TYPE_DORIS = "doris";
+
+	public static final String DB_TYPE_HIVE = "hive";
+
+	public static final String DB_TYPE_HBASE = "hbase";
+
+	public static final String DB_TYPE_ELASTICSEARCH = "elasticsearch";
+
+	public static final String DB_TYPE_OCEANBASE = "oceanbase";
+
+	public static final String DB_TYPE_DAMENG = "dameng";
+
+	public static final String DB_TYPE_KINGBASE = "kingbase";
+
+	public static final String DB_TYPE_GAUSSDB = "gaussdb";
+
+	public static final String DB_TYPE_MARIADB = "mariadb";
+
 	private DatabaseConfigConstants() {
 		// Utility class, instantiation prohibited
 	}
