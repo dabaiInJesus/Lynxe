@@ -30,10 +30,18 @@
       >
         <option value="">{{ $t('config.databaseConfig.selectType') }}</option>
         <option value="mysql">MySQL</option>
-        <option value="h2">H2</option>
+        <option value="mariadb">MariaDB</option>
         <option value="postgresql">PostgreSQL</option>
         <option value="oracle">Oracle</option>
         <option value="sqlserver">SQL Server</option>
+        <option value="h2">H2</option>
+        <option value="clickhouse">ClickHouse</option>
+        <option value="doris">Apache Doris</option>
+        <option value="hive">Apache Hive</option>
+        <option value="oceanbase">OceanBase</option>
+        <option value="dameng">达梦 (DM)</option>
+        <option value="kingbase">人大金仓 (KingBase)</option>
+        <option value="gaussdb">GaussDB</option>
       </select>
     </div>
 
@@ -163,19 +171,35 @@ import { computed, ref } from 'vue'
 // Driver class name mapping based on database type
 const DRIVER_CLASS_NAMES: Record<string, string> = {
   mysql: 'com.mysql.cj.jdbc.Driver',
-  h2: 'org.h2.Driver',
+  mariadb: 'org.mariadb.jdbc.Driver',
   postgresql: 'org.postgresql.Driver',
   oracle: 'oracle.jdbc.OracleDriver',
   sqlserver: 'com.microsoft.sqlserver.jdbc.SQLServerDriver',
+  h2: 'org.h2.Driver',
+  clickhouse: 'com.clickhouse.jdbc.ClickHouseDriver',
+  doris: 'com.mysql.cj.jdbc.Driver',
+  hive: 'org.apache.hive.jdbc.HiveDriver',
+  oceanbase: 'com.mysql.cj.jdbc.Driver',
+  dameng: 'dm.jdbc.driver.DmDriver',
+  kingbase: 'com.kingbase8.Driver',
+  gaussdb: 'com.huawei.gaussdb.jdbc.GaussDBDriver',
 }
 
 // JDBC URL prefix mapping based on database type
 const JDBC_URL_PREFIXES: Record<string, string> = {
   mysql: 'jdbc:mysql://',
-  h2: 'jdbc:h2:',
+  mariadb: 'jdbc:mariadb://',
   postgresql: 'jdbc:postgresql://',
   oracle: 'jdbc:oracle:thin:@',
   sqlserver: 'jdbc:sqlserver://',
+  h2: 'jdbc:h2:',
+  clickhouse: 'jdbc:clickhouse://',
+  doris: 'jdbc:mysql://',
+  hive: 'jdbc:hive2://',
+  oceanbase: 'jdbc:mysql://',
+  dameng: 'jdbc:dm://',
+  kingbase: 'jdbc:kingbase8://',
+  gaussdb: 'jdbc:gaussdb://',
 }
 
 interface Props {
