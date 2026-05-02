@@ -42,6 +42,10 @@
         <option value="dameng">达梦 (DM)</option>
         <option value="kingbase">人大金仓 (KingBase)</option>
         <option value="gaussdb">GaussDB</option>
+        <option value="h2">H2</option>
+        <option value="postgresql">PostgreSQL</option>
+        <option value="oracle">Oracle</option>
+        <option value="sqlserver">SQL Server</option>
       </select>
     </div>
 
@@ -183,6 +187,10 @@ const DRIVER_CLASS_NAMES: Record<string, string> = {
   dameng: 'dm.jdbc.driver.DmDriver',
   kingbase: 'com.kingbase8.Driver',
   gaussdb: 'com.huawei.gaussdb.jdbc.GaussDBDriver',
+  h2: 'org.h2.Driver',
+  postgresql: 'org.postgresql.Driver',
+  oracle: 'oracle.jdbc.OracleDriver',
+  sqlserver: 'com.microsoft.sqlserver.jdbc.SQLServerDriver',
 }
 
 // JDBC URL prefix mapping based on database type
@@ -200,6 +208,10 @@ const JDBC_URL_PREFIXES: Record<string, string> = {
   dameng: 'jdbc:dm://',
   kingbase: 'jdbc:kingbase8://',
   gaussdb: 'jdbc:gaussdb://',
+  h2: 'jdbc:h2:',
+  postgresql: 'jdbc:postgresql://',
+  oracle: 'jdbc:oracle:thin:@',
+  sqlserver: 'jdbc:sqlserver://',
 }
 
 interface Props {

@@ -379,7 +379,6 @@
             <version>2.5.6</version>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>

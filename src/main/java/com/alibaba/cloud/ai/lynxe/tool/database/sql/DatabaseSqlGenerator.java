@@ -454,4 +454,3 @@ public class DatabaseSqlGenerator {
 				+ "WHERE 1=0 -- Not supported for this database type";
 	}
 
-}
