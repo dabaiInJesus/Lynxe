@@ -63,6 +63,8 @@ public class DatabaseDriverConstants {
 
 		// OceanBase (MySQL compatible)
 		DRIVER_CLASS_MAP.put("oceanbase", "com.mysql.cj.jdbc.Driver");
+		DRIVER_CLASS_MAP.put("oceanbase_mysql", "com.mysql.cj.jdbc.Driver");
+		DRIVER_CLASS_MAP.put("ob_mysql", "com.mysql.cj.jdbc.Driver");
 		DRIVER_CLASS_MAP.put("ob", "com.mysql.cj.jdbc.Driver");
 
 		// 达梦 (DM Database)
@@ -85,12 +87,14 @@ public class DatabaseDriverConstants {
 	static {
 		// MySQL
 		URL_PATTERN_MAP.put("mysql", "jdbc:mysql://{host}:{port}/{database}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
+
+		// MariaDB
 		URL_PATTERN_MAP.put("mariadb", "jdbc:mariadb://{host}:{port}/{database}");
 
 		// PostgreSQL
 		URL_PATTERN_MAP.put("postgresql", "jdbc:postgresql://{host}:{port}/{database}");
 
-		// Oracle (thin mode)
+		// Oracle (Thin mode)
 		URL_PATTERN_MAP.put("oracle", "jdbc:oracle:thin:@{host}:{port}:{database}");
 
 		// SQL Server
@@ -112,6 +116,8 @@ public class DatabaseDriverConstants {
 
 		// OceanBase
 		URL_PATTERN_MAP.put("oceanbase", "jdbc:mysql://{host}:{port}/{database}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
+		URL_PATTERN_MAP.put("oceanbase_mysql", "jdbc:mysql://{host}:{port}/{database}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
+		URL_PATTERN_MAP.put("ob_mysql", "jdbc:mysql://{host}:{port}/{database}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
 		URL_PATTERN_MAP.put("ob", "jdbc:mysql://{host}:{port}/{database}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
 
 		// 达梦 (DM Database)
@@ -136,13 +142,15 @@ public class DatabaseDriverConstants {
 		DEFAULT_PORT_MAP.put("postgresql", 5432);
 		DEFAULT_PORT_MAP.put("oracle", 1521);
 		DEFAULT_PORT_MAP.put("sqlserver", 1433);
-		DEFAULT_PORT_MAP.put("h2", 9092);
+		DEFAULT_PORT_MAP.put("h2", 8082);
 		DEFAULT_PORT_MAP.put("clickhouse", 8123);
 		DEFAULT_PORT_MAP.put("doris", 9030);
 		DEFAULT_PORT_MAP.put("apache_doris", 9030);
 		DEFAULT_PORT_MAP.put("hive", 10000);
 		DEFAULT_PORT_MAP.put("apache_hive", 10000);
 		DEFAULT_PORT_MAP.put("oceanbase", 2883);
+		DEFAULT_PORT_MAP.put("oceanbase_mysql", 2883);
+		DEFAULT_PORT_MAP.put("ob_mysql", 2883);
 		DEFAULT_PORT_MAP.put("ob", 2883);
 		DEFAULT_PORT_MAP.put("dameng", 5236);
 		DEFAULT_PORT_MAP.put("dm", 5236);
@@ -156,7 +164,6 @@ public class DatabaseDriverConstants {
 	public static final Map<String, Pattern> URL_REGEX_MAP = new HashMap<>();
 
 	static {
-		// MySQL pattern: jdbc:mysql://host:port/database
 		URL_REGEX_MAP.put("mysql",
 				Pattern.compile("jdbc:mysql://.+:\\d+/.*"));
 		URL_REGEX_MAP.put("mariadb",
